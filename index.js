@@ -1,9 +1,8 @@
 import { print } from "./js/lib.js";
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
-   Complete the below for code reviewers' convenience:
 
-   Code repository: _put repo URL here_
-   Web app: _put project's github pages URL here_
+   Code repository: https://github.com/igarok88/a-tiny-JS-world
+   Web app: https://igarok88.github.io/a-tiny-JS-world/
    */
 
 const dog = {
@@ -40,19 +39,8 @@ const man = {
 };
 
 const inhabitants = [dog, cat, woman, man];
+const inhabitantKeys = ["species", "name", "gender", "legs", "hands", "saying"];
 
 inhabitants.forEach((obj) => {
-  print(
-    obj.species +
-      ";" +
-      obj.name +
-      ";" +
-      obj.gender +
-      ";" +
-      obj.legs +
-      ";" +
-      obj.hands +
-      ";" +
-      obj.saying
-  );
+  print(inhabitantKeys.map((key) => obj[key]).join("; "));
 });
