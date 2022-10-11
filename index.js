@@ -5,42 +5,45 @@ import { print } from "./js/lib.js";
    Web app: https://igarok88.github.io/a-tiny-JS-world/
    */
 
-const dog = {
-  species: "dog",
-  name: "Sharik",
-  gender: "male",
-  legs: 4,
-  hands: 0,
-  saying: "woof-woof!",
-};
-const cat = {
-  species: "cat",
-  name: "Mirzik",
-  gender: "male",
-  legs: 4,
-  hands: 0,
-  saying: "moow-moow!",
-};
-const woman = {
-  species: "woman",
-  name: "Yulia",
-  gender: "famele",
-  legs: 2,
-  hands: 2,
-  saying: "Hi Ihor!",
-};
-const man = {
-  species: "man",
-  name: "Ihor",
-  gender: "male",
-  legs: 2,
-  hands: 2,
-  saying: "Hello Yulia!",
-};
+class Inhabitants {
+  constructor(species, name, gender, legs, saying) {
+    this.species = species;
+    this.name = name;
+    this.gender = gender;
+    this.legs = legs;
+    this.saying = saying;
+  }
+
+  getArrValues() {
+    return [this.species, this.name, this.gender, this.legs, this.saying];
+  }
+}
+
+class Human extends Inhabitants {
+  constructor(species, name, gender, legs, hands, saying) {
+    super(species, name, gender, legs, saying);
+    this.hands = hands;
+  }
+
+  getArrValues() {
+    return [
+      this.species,
+      this.name,
+      this.gender,
+      this.legs,
+      this.hands,
+      this.saying,
+    ];
+  }
+}
+
+const dog = new Inhabitants("dog", "Sharik", "male", 4, "woof-woof!");
+const cat = new Inhabitants("cat", "Mirzik", "male", 4, "meow-meow!");
+const woman = new Human("woman", "Yulia", "famele", 2, 2, "Hi Ihor!");
+const man = new Human("man", "Ihor", "male", 2, 2, "Hello Yulia!");
 
 const inhabitants = [dog, cat, woman, man];
-const inhabitantKeys = ["species", "name", "gender", "legs", "hands", "saying"];
 
 inhabitants.forEach((obj) => {
-  print(inhabitantKeys.map((key) => obj[key]).join("; "));
+  print(obj.getArrValues().join("; "));
 });
